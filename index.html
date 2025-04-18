@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer 360 Report</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <h2>Customer Tabular Report</h2>
+    <table id="customerTable" class="display">
+        <thead>
+            <tr>
+                <th>CustomerID</th>
+                <th>Name</th>
+                <th>Product</th>
+                <th>Region</th>
+                <th>Risk Score</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#customerTable').DataTable({
+                ajax: 'http://127.0.0.1:5000/api/customers',
+                columns: [
+                    { data: 'CustomerID' },
+                    { data: 'Name' },
+                    { data: 'Product' },
+                    { data: 'Region' },
+                    { data: 'RiskScore' }
+                ],
+                pageLength: 10
+            });
+        });
+    </script>
+</body>
+</html>
